@@ -8,10 +8,10 @@
 protocol PostUseCase {
     func getPosts() -> [PostModel]
     func getUserPosts(user:UserModal) -> [PostModel]
+    func getAllUsers() -> [UserModal]
 }
 
 class PostInteractor {}
-
 
 extension PostInteractor:PostUseCase {
     
@@ -22,6 +22,11 @@ extension PostInteractor:PostUseCase {
     
     /// Get the post for current user
     func getUserPosts(user: UserModal) -> [PostModel] {
-        MockDatas.posts.filter { $0.id == user.id }
+        MockDatas.posts.filter { $0.user.id == user.id }
+    }
+    
+    /// Get all the users
+    func getAllUsers() -> [UserModal] {
+         MockDatas.users
     }
 }

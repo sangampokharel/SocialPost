@@ -8,7 +8,9 @@
 import UIKit
 
 protocol PostView:AnyObject {
+    func getAllUsers(users:[UserModal])
     func getAllPost(post:[PostModel])
+    func getUserPosts(post:[PostModel])
 }
 
 class PostsViewController: UIViewController {
@@ -45,7 +47,7 @@ class PostsViewController: UIViewController {
     //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavBar()
+       
         setupUI()
         setUpTabs()
         setUpViewControllers()
@@ -54,9 +56,19 @@ class PostsViewController: UIViewController {
     
     
     //MARK: SetUp NavBar
-    private func setUpNavBar() {
+    private func setUpDropDown(users:[UserModal]) {
         let dropDownView = DropDownView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        dropDownView.users = users
+        dropDownView.getSelectedUser = { [weak self] user in
+            self?.presenter?.getSelectedUser(user: user)
+        }
         self.navigationItem.titleView = dropDownView
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentCreatePostViewController))
+        if !users.isEmpty, let user = users.first {
+            presenter?.getSelectedUser(user: user)
+        }
+        
+        
     }
     
     //MARK: SetUp Tabs
@@ -165,6 +177,10 @@ class PostsViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
         updateIndicatorPosition(for: sender.tag)
     }
+    
+    @objc private func presentCreatePostViewController() {
+        presenter?.showCreateViewController()
+    }
 }
 
 
@@ -176,8 +192,20 @@ extension PostsViewController:UIScrollViewDelegate {
     }
 }
 extension PostsViewController:PostView {
+  
+    
     func getAllPost(post: [PostModel]) {
         if let vc = viewControllers.last as? ChildPostViewController {
+            vc.posts = post
+        }
+    }
+    
+    func getAllUsers(users: [UserModal]) {
+        setUpDropDown(users: users)
+    }
+    
+    func getUserPosts(post: [PostModel]) {
+        if let vc = viewControllers.first as? ChildPostViewController {
             vc.posts = post
         }
     }

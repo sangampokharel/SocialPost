@@ -148,6 +148,7 @@
 				DEVELOPMENT_TEAM = 974PYRN6CZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialPost/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select an image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -176,6 +177,7 @@
 				DEVELOPMENT_TEAM = 974PYRN6CZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SocialPost/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select an image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

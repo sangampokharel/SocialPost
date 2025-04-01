@@ -5,11 +5,7 @@
 //  Created by sangam pokharel on 01/04/2025.
 //
 //
-//  DropDownView.swift
-//  SocialPost
-//
-//  Created by sangam pokharel on 01/04/2025.
-//
+
 
 import UIKit
 
@@ -17,30 +13,33 @@ class DropDownView: UIView {
     
     lazy var dropdownButton: UIButton = {
         var config = UIButton.Configuration.bordered()
-        config.title = "Select Item"
         config.baseForegroundColor = .white
         config.baseBackgroundColor = .clear
         config.image = UIImage(systemName: "chevron.down")
         config.imagePlacement = .trailing
         config.imagePadding = 8
         config.cornerStyle = .medium
-        
-        // Reduce the size of the icon
-        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 12, weight: .regular)
+        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 5, weight: .regular)
 
         let button = UIButton(configuration: config, primaryAction: UIAction { _ in
             self.handleBtnTapped()
         })
 
-        // Apply circular border with corner radius 8
         button.layer.borderColor = UIColor.gray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
-        button.layer.masksToBounds = true // Ensures proper corner radius clipping
+        button.layer.masksToBounds = true
 
         return button
     }()
 
+    var users:[UserModal] = [] {
+        didSet {
+            configureMenu()
+        }
+    }
+    
+    var getSelectedUser: ((UserModal) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,28 +63,20 @@ class DropDownView: UIView {
     }
     
     private func configureMenu() {
-        let option1 = UIAction(title: "John", image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-            print("Selected Option 1")
-            self.dropdownButton.setTitle("Option 1 ⬇️", for: .normal)
-        }
-        
-        let option2 = UIAction(title: "Mary", image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-            print("Selected Option 2")
-            self.dropdownButton.setTitle("Option 2 ⬇️", for: .normal)
-        }
-        
-        let option3 = UIAction(title: "Aryan", image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-            print("Selected Option 3")
-            self.dropdownButton.setTitle("Option 3 ⬇️", for: .normal)
-        }
-        
-        let menu = UIMenu(title: "", options: .displayInline, children: [option1, option2, option3])
-        
+        let userMenuActions = users.map { user in
+            UIAction(title:user.name){ _ in
+            self.dropdownButton.setTitle(user.name, for: .normal)
+            self.getSelectedUser?(user)
+        }}
+        let menu = UIMenu(children: userMenuActions)
         dropdownButton.menu = menu
-        dropdownButton.showsMenuAsPrimaryAction = true
+        self.dropdownButton.setTitle(users.first?.name, for: .normal)
+        if let user = users.first {
+            getSelectedUser?(user)
+        }
     }
-    
-    @objc private func handleBtnTapped() {
-        configureMenu()
+   
+   @objc private func handleBtnTapped() {
+        dropdownButton.showsMenuAsPrimaryAction = true
     }
 }
