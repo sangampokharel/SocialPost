@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostRouting {
-    func openCreatePostViewController()
+    func openCreatePostViewController(user:UserModal)
 }
 
 class PostRouter {
@@ -21,8 +21,8 @@ class PostRouter {
 
 
 extension PostRouter: PostRouting {
-    func openCreatePostViewController() {
-        let createPostModule = CreatePostBuilder.build()
+    func openCreatePostViewController(user:UserModal) {
+        let createPostModule = CreatePostBuilder.build(user:user)
         viewController?.present(createPostModule, animated: true)
     }
     

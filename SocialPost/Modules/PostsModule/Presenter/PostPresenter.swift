@@ -11,7 +11,9 @@ import UIKit
 protocol PostPresenterProtocol {
     func viewDidLoad()
     func getSelectedUser(user:UserModal)
-    func showCreateViewController()
+    func showCreateViewController(user:UserModal)
+    func reloadPost()
+ 
 }
 
 class PostPresenter {
@@ -28,9 +30,8 @@ class PostPresenter {
 
 extension PostPresenter:PostPresenterProtocol {
     
-    func showCreateViewController() {
-        // use router to presenter another view controller
-        postRouter?.openCreatePostViewController()
+    func showCreateViewController(user:UserModal) {
+        postRouter?.openCreatePostViewController(user:user)
     }
     
     func viewDidLoad() {
@@ -47,6 +48,14 @@ extension PostPresenter:PostPresenterProtocol {
         let selectedUserPosts = interactor?.getUserPosts(user: user)
         DispatchQueue.main.async { [weak self] in
             self?.view?.getUserPosts(post: selectedUserPosts ?? [])
+        }
+    }
+    
+    func reloadPost() {
+        let posts = interactor?.getPosts()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            view?.getAllPost(post: posts ?? [])
         }
     }
     

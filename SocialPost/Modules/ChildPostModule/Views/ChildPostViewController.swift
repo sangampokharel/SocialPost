@@ -36,6 +36,7 @@ class ChildPostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#192734")
         setUp()
+     
     }
     
     //MARK: SetUp
@@ -54,6 +55,13 @@ class ChildPostViewController: UIViewController {
     //MARK: Functionalities
     func populateData() {
         postTableView.reloadData()
+    }
+    
+   
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -78,6 +86,6 @@ extension ChildPostViewController:UITableViewDataSource {
 
 extension ChildPostViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      //handle the case to navigate to post detail page
+        //handle the case to navigate to post detail page
     }
 }

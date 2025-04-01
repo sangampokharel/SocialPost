@@ -8,9 +8,15 @@
 import UIKit
 
 class CreatePostBuilder {
-    
-    static func build() -> UINavigationController {
-        let view =  UINavigationController(rootViewController: CreatePostViewController())
+   
+    static func build(user:UserModal) -> UINavigationController {
+        let viewController = CreatePostViewController()
+        let view =  UINavigationController(rootViewController: viewController)
+        let interactor = CreatePostInteractor()
+        let router = CreatePostRouter(viewController: viewController)
+        let presenter = CreatePostPresenter(view: viewController, router: router, interactor: interactor)
+        viewController.user = user
+        viewController.presenter = presenter
         return view
     }
     

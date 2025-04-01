@@ -43,14 +43,14 @@ class PostsViewController: UIViewController {
     
     private var tabButtons: [UIButton] = []
     private var viewControllers: [UIViewController] = []
-    
+    private var selectedUser:UserModal?
     //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setupUI()
         setUpTabs()
         setUpViewControllers()
+        setUpObserver()
         presenter?.viewDidLoad()
     }
     
@@ -60,12 +60,16 @@ class PostsViewController: UIViewController {
         let dropDownView = DropDownView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
         dropDownView.users = users
         dropDownView.getSelectedUser = { [weak self] user in
+            self?.selectedUser = user
             self?.presenter?.getSelectedUser(user: user)
+           
         }
         self.navigationItem.titleView = dropDownView
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(presentCreatePostViewController))
         if !users.isEmpty, let user = users.first {
+            self.selectedUser = user
             presenter?.getSelectedUser(user: user)
+            
         }
         
         
@@ -179,7 +183,24 @@ class PostsViewController: UIViewController {
     }
     
     @objc private func presentCreatePostViewController() {
-        presenter?.showCreateViewController()
+        if let selectedUser {
+            presenter?.showCreateViewController(user: selectedUser)
+        }
+    }
+    
+    private func setUpObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(notifyFetchPost(_:)),
+                                               name: .fetchPost,
+                                               object: nil)
+    }
+    
+    @objc private func notifyFetchPost(_ notification: Notification) {
+        if let selectedUser {
+            presenter?.getSelectedUser(user: selectedUser)
+        }
+        presenter?.reloadPost()
+        
     }
 }
 

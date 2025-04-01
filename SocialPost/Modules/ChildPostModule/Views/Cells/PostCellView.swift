@@ -42,8 +42,8 @@ struct PostCellView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                     
-                    if let postImage = post.imageName, let uiImage = UIImage(named: postImage) {
-                        Image(uiImage: uiImage)
+                    if let image = post.imageName {
+                        Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth:  300, maxHeight: 300)

@@ -4,7 +4,7 @@
 //
 //  Created by sangam pokharel on 01/04/2025.
 //
-import Foundation
+import UIKit
 
 struct MockDatas {
     static let users: [UserModal] = [
@@ -25,12 +25,12 @@ struct MockDatas {
         )
     ]
     
-    static let posts: [PostModel] = [
+    static var posts: [PostModel] = [
         // John Doe's posts
         PostModel(
             text: "Enjoying a great day outside!",
             user: users[0],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Just finished a new coding project",
@@ -40,7 +40,7 @@ struct MockDatas {
         PostModel(
             text: "Beautiful sunset today",
             user: users[0],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Trying out a new recipe tonight",
@@ -50,14 +50,14 @@ struct MockDatas {
         PostModel(
             text: "Morning coffee thoughts",
             user: users[0],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         
         // Jane Smith's posts
         PostModel(
             text: "New art piece completed!",
             user: users[1],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Book recommendation: The Great Gatsby",
@@ -67,12 +67,12 @@ struct MockDatas {
         PostModel(
             text: "Weekend hiking adventure",
             user: users[1],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Working on my photography skills",
             user: users[1],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Thoughts on AI development",
@@ -84,7 +84,7 @@ struct MockDatas {
         PostModel(
             text: "Game night with friends!",
             user: users[2],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "New personal best at the gym",
@@ -94,7 +94,7 @@ struct MockDatas {
         PostModel(
             text: "Watching the big match tonight",
             user: users[2],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         ),
         PostModel(
             text: "Trying to learn guitar",
@@ -104,7 +104,7 @@ struct MockDatas {
         PostModel(
             text: "Great day at the beach",
             user: users[2],
-            imageName: "post.first"
+            imageName: UIImage(named:"post.first")
         )
     ]
 }
