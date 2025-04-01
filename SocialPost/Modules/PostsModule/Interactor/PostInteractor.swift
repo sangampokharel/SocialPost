@@ -14,16 +14,14 @@ class PostInteractor {}
 
 
 extension PostInteractor:PostUseCase {
+    
+    /// Gets the post of all users
     func getPosts() -> [PostModel] {
-        
-        return []
+        MockDatas.posts
     }
     
+    /// Get the post for current user
     func getUserPosts(user: UserModal) -> [PostModel] {
-        
-        // filter the user post and return it to user
-        return []
+        MockDatas.posts.filter { $0.id == user.id }
     }
-    
-    
 }

@@ -5,6 +5,7 @@
 //  Created by sangam pokharel on 01/04/2025.
 //
 
+import Foundation
 
 protocol PostPresenterProtocol {
     func viewDidLoad()
@@ -12,7 +13,6 @@ protocol PostPresenterProtocol {
 
 class PostPresenter {
     weak var view:PostView?
-
     var interactor:PostUseCase?
     var postRouter:PostRouting?
     
@@ -22,9 +22,14 @@ class PostPresenter {
         self.postRouter = router
     }
 }
+
 extension PostPresenter:PostPresenterProtocol {
     func viewDidLoad() {
         let posts = interactor?.getPosts()
-        view?.updatePost(post: posts ?? [])
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            view?.getAllPost(post: posts ?? [])
+            
+        }
     }
 }

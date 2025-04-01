@@ -9,35 +9,32 @@ import SwiftUI
 
 struct PostCellView: View {
     
-    let username: String = "Sangam"
-    let handle: String = "@sangam"
-    let text: String = "Okay #Apple... I need your help!!! I'm still less than a year into investing, but haven't been able to find a mentor... suggestions?"
-    let postImage: UIImage = UIImage(named: "post.first")!
-    let profileImage:UIImage = UIImage(named: "profile.first")!
+    let post:PostModel
     
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Image(uiImage: profileImage)
+                Image(uiImage: UIImage(named: post.user.profileImageName) ?? UIImage(systemName: "person.fill")!)
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .foregroundColor(.gray)
                 
+                
                 VStack(alignment: .leading,spacing: 16) {
                     HStack(alignment: .top, spacing: 8) {
-                        Text(username)
+                        Text(post.user.name)
                             .font(.subheadline)
                             .foregroundColor(.white)
                         
-                        Text(handle)
+                        Text(post.user.username)
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
                         Spacer()
                     }
                     
-                    Text(text)
+                    Text(post.text)
                         .font(.caption)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.leading)
@@ -45,17 +42,19 @@ struct PostCellView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                     
-                    Image(uiImage: postImage)
+                    if let postImage = post.imageName, let uiImage = UIImage(named: postImage) {
+                        Image(uiImage: uiImage)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth:  300, maxHeight: 300)
                             .clipped()
+                    }
                     
                 }
-                 Spacer()
+                Spacer()
             }
             .padding()
-          
+            
             Divider()
                 .padding(.bottom)
         }
@@ -63,10 +62,7 @@ struct PostCellView: View {
         .background(Color(UIColor(hex: "#192734")))
     }
     
- 
+    
 }
 
 
-#Preview {
-    PostCellView()
-}

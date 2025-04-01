@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostView:AnyObject {
-    func updatePost(post:[PostModel])
+    func getAllPost(post:[PostModel])
 }
 
 class PostsViewController: UIViewController {
@@ -176,9 +176,9 @@ extension PostsViewController:UIScrollViewDelegate {
     }
 }
 extension PostsViewController:PostView {
-    func updatePost(post: [PostModel]) {
-        // pass the data to next child view controller and update it
+    func getAllPost(post: [PostModel]) {
+        if let vc = viewControllers.last as? ChildPostViewController {
+            vc.posts = post
+        }
     }
-    
-   
 }

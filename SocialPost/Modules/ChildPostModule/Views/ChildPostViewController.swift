@@ -10,7 +10,8 @@ import SwiftUI
 
 
 class ChildPostViewController: UIViewController {
-
+    
+    //MARK: Properties
     private lazy var postTableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -20,16 +21,24 @@ class ChildPostViewController: UIViewController {
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
-
-     }()
-     
+    }()
     
+    
+    var posts:[PostModel] = [] {
+        didSet {
+            populateData()
+        }
+    }
+    
+    
+    //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "#192734")
         setUp()
     }
- 
+    
+    //MARK: SetUp
     private func setUp() {
         view.addSubview(postTableView)
         NSLayoutConstraint.activate([
@@ -40,29 +49,35 @@ class ChildPostViewController: UIViewController {
         ])
         postTableView.separatorInset = .zero
     }
+    
+    
+    //MARK: Functionalities
+    func populateData() {
+        postTableView.reloadData()
+    }
 }
 
 extension ChildPostViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") else {
             return UITableViewCell()
         }
-
+        let post = posts[indexPath.row]
         cell.contentView.backgroundColor = UIColor(hex: "#192734")
         cell.contentConfiguration = UIHostingConfiguration(content: {
-            PostCellView()
+            PostCellView(post: post)
         }).margins(.all,.zero)
-      
+        
         return cell
     }
 }
 
 extension ChildPostViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+      //handle the case to navigate to post detail page
     }
 }
