@@ -6,7 +6,6 @@
 //
 //
 
-
 import UIKit
 
 class DropDownView: UIView {
@@ -20,19 +19,15 @@ class DropDownView: UIView {
         config.imagePadding = 8
         config.cornerStyle = .medium
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 5, weight: .regular)
-
-        let button = UIButton(configuration: config, primaryAction: UIAction { _ in
-            self.handleBtnTapped()
-        })
-
+        let button = UIButton(configuration: config)
         button.layer.borderColor = UIColor.gray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
-
+        
         return button
     }()
-
+    
     var users:[UserModal] = [] {
         didSet {
             configureMenu()
@@ -60,14 +55,16 @@ class DropDownView: UIView {
             dropdownButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
+        dropdownButton.showsMenuAsPrimaryAction = true
+        
     }
     
     private func configureMenu() {
         let userMenuActions = users.map { user in
             UIAction(title:user.name){ _ in
-            self.dropdownButton.setTitle(user.name, for: .normal)
-            self.getSelectedUser?(user)
-        }}
+                self.dropdownButton.setTitle(user.name, for: .normal)
+                self.getSelectedUser?(user)
+            }}
         let menu = UIMenu(children: userMenuActions)
         dropdownButton.menu = menu
         self.dropdownButton.setTitle(users.first?.name, for: .normal)
@@ -75,8 +72,7 @@ class DropDownView: UIView {
             getSelectedUser?(user)
         }
     }
-   
-   @objc private func handleBtnTapped() {
-        dropdownButton.showsMenuAsPrimaryAction = true
-    }
+    
+    
 }
+

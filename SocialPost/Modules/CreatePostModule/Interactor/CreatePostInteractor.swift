@@ -10,18 +10,11 @@ protocol CreatePostUseCase {
     func createPost(post:PostModel,completion:@escaping ()->(Void))
 }
 
-class CreatePostInteractor {
-    
-}
+class CreatePostInteractor {}
 
 extension CreatePostInteractor: CreatePostUseCase {
     func createPost(post: PostModel, completion: @escaping () -> (Void)) {
-        // update the mock data
-        MockDatas.posts.append(post)
+        MockDatas.posts.insert(post, at: 0)
         completion()
     }
-    
- 
-    
-    
 }

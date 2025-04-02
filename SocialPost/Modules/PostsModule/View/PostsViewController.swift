@@ -71,8 +71,6 @@ class PostsViewController: UIViewController {
             presenter?.getSelectedUser(user: user)
             
         }
-        
-        
     }
     
     //MARK: SetUp Tabs

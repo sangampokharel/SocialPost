@@ -16,12 +16,12 @@ struct MockDatas {
         UserModal(
             name: "Jane Smith",
             username: "@janesmith",
-            profileImageName: "profile.first"
+            profileImageName: "profile.second"
         ),
         UserModal(
             name: "Bob Johnson",
             username: "@bobjohnson",
-            profileImageName: "profile.first"
+            profileImageName: "profile.third"
         )
     ]
     
@@ -57,7 +57,7 @@ struct MockDatas {
         PostModel(
             text: "New art piece completed!",
             user: users[1],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.second")
         ),
         PostModel(
             text: "Book recommendation: The Great Gatsby",
@@ -67,12 +67,12 @@ struct MockDatas {
         PostModel(
             text: "Weekend hiking adventure",
             user: users[1],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.second")
         ),
         PostModel(
             text: "Working on my photography skills",
             user: users[1],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.second")
         ),
         PostModel(
             text: "Thoughts on AI development",
@@ -84,7 +84,7 @@ struct MockDatas {
         PostModel(
             text: "Game night with friends!",
             user: users[2],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.third")
         ),
         PostModel(
             text: "New personal best at the gym",
@@ -94,7 +94,7 @@ struct MockDatas {
         PostModel(
             text: "Watching the big match tonight",
             user: users[2],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.third")
         ),
         PostModel(
             text: "Trying to learn guitar",
@@ -104,7 +104,7 @@ struct MockDatas {
         PostModel(
             text: "Great day at the beach",
             user: users[2],
-            imageName: UIImage(named:"post.first")
+            imageName: UIImage(named:"post.third")
         )
     ]
 }

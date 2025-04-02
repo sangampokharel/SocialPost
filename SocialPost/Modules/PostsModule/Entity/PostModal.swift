@@ -13,4 +13,8 @@ struct PostModel {
     let user:UserModal
     let imageName: UIImage?
     let timestamp: Date = Date()
+    let likes: Int = 0
+    let comments: Int = 0
+    let views: Int = 0
+    let shares: Int = 0
 }

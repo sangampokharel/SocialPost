@@ -73,6 +73,7 @@ class CreatePostViewController: UIViewController {
         textView.layer.cornerRadius = 8
         textView.textColor = .white
         textView.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        textView.inputAccessoryView = createToolbar()
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -81,11 +82,10 @@ class CreatePostViewController: UIViewController {
         let imgView = UIImageView()
         imgView.image = UIImage(systemName: "photo")
         imgView.tintColor = .white
-        imgView.contentMode = .scaleAspectFit
+        imgView.contentMode = .scaleAspectFill
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.isUserInteractionEnabled = true
         imgView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageTapped)))
-        
         return imgView
     }()
     
@@ -169,7 +169,9 @@ class CreatePostViewController: UIViewController {
     
     @objc private func handlePostTapped() {
         if let user {
-            let post = PostModel(text: textEditor.text, user: user, imageName: imageView.image)
+            let text = textEditor.text == "Type here..." ? "" : textEditor.text ?? ""
+            let image = imageView.image == UIImage(systemName: "photo") ? nil : imageView.image
+            let post = PostModel(text: text, user: user, imageName: image)
             presenter?.createPost(post: post)
             NotificationCenter.default.post(name: .fetchPost, object: nil)
         }
@@ -183,9 +185,26 @@ class CreatePostViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    private func createToolbar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))
+        
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        return toolbar
+    }
+
+    
     private func updatePostButtonState() {
         navigationItem.rightBarButtonItem?.isEnabled = isPostValid
     }
+    
+    @objc private func dismissKeyboard() {
+        textEditor.resignFirstResponder()
+    }
+
     
     private func setUserData() {
         if let user {
@@ -194,8 +213,6 @@ class CreatePostViewController: UIViewController {
             circularImageView.image = UIImage(named: user.profileImageName)
         }
     }
-
-    
 }
 
 
