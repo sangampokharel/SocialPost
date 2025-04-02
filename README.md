@@ -12,10 +12,6 @@ Scrollable list of posts displaying user details, text, and optional images.
 
 Local storage for posts (no backend integration).
 
-Screenshots
-
-(Add screenshots here if available)
-
 Project Structure
 
 Models
