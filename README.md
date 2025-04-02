@@ -14,13 +14,13 @@ A simple iOS social media application built using Uikit and VIPER architecture, 
 
 # ScreenShots
 
-![imgpsh_fullsize_anim](https://github.com/user-attachments/assets/5bcd2f7e-f8cd-4301-8f11-5b66fa0f1e99)
+<div style="display: flex; gap: 10px;">
+    <img src="https://github.com/user-attachments/assets/5bcd2f7e-f8cd-4301-8f11-5b66fa0f1e99" alt="img1" width="200" />
+    <img src="https://github.com/user-attachments/assets/93c2f057-715f-4874-b547-a9d7950b1764" alt="img2" width="200" />
+    <img src="https://github.com/user-attachments/assets/3f3966d6-8692-4019-bd03-72b22731398f" alt="img3" width="200" />
+    <img src="https://github.com/user-attachments/assets/11ff505d-6fce-4b42-8215-a8b846497554" alt="img4" width="200" />
+</div>
 
-![imgpsh_fullsize_anim-2](https://github.com/user-attachments/assets/93c2f057-715f-4874-b547-a9d7950b1764)
-
-![imgpsh_fullsize_anim-3](https://github.com/user-attachments/assets/3f3966d6-8692-4019-bd03-72b22731398f)
-
-![imgpsh_fullsize_anim-4](https://github.com/user-attachments/assets/11ff505d-6fce-4b42-8215-a8b846497554)
 
 Project Structure
 
