@@ -21,6 +21,10 @@ A simple iOS social media application built using Uikit and VIPER architecture, 
     <img src="https://github.com/user-attachments/assets/11ff505d-6fce-4b42-8215-a8b846497554" alt="img4" width="200" />
 </div>
 
+# Video URL
+
+https://drive.google.com/file/d/16sSKLPE2c903PMPo_22SThkDE5CWPBg7/view?usp=sharing
+
 
 Project Structure
 
