@@ -1,70 +1,58 @@
-SocialPost
+# SocialPost
 
 A simple iOS social media application built using Uikit and VIPER architecture, demonstrating user-generated posts with a minimalistic UI. This project allows users to create and view posts within a local environment.
 
-Features
+# Features
 
-Three dummy users with a dropdown to switch between them.
+- Three dummy users with a dropdown to switch between them.
 
-Scrollable list of posts displaying user details, text, and optional images.
+- Scrollable list of posts displaying user details, text, and optional images.
 
-"Create Post" button to add new posts with text and images.
+- "Create Post" button to add new posts with text and images.
 
-Local storage for posts (no backend integration).
+- Local storage for posts (no backend integration).
 
 Project Structure
 
-Models
+# Models
 
-User: Represents an app user with name, username, and profile image.
+- User: Represents an app user with name, username, and profile image.
 
-Post: Represents a post with user details, text, optional image, and timestamp.
+- Post: Represents a post with user details, text, optional image, and timestamp.
 
-Views
+# Installation
 
-PostListView: Displays the list of posts.
+- Clone the repository:
 
-CreatePostView: Allows users to create a new post.
+- git clone https://github.com/sangampokharel/SocialPost
 
-UserSelectionView: Dropdown menu for selecting users.
+- Open the project in Xcode.
 
-ViewModel
+- Run the app on a simulator.
 
-PostViewModel: Manages posts and updates the UI.
+# Requirements
 
-Installation
+- iOS 16+
 
-Clone the repository:
+- Xcode 16+
 
-git clone https://github.com/sangampokharel/SocialPost
+- Swift 5.9+
 
-Open the project in Xcode.
+# How It Works
 
-Run the app on a simulator.
+- Select a user from the dropdown menu.
 
-Requirements
+- View posts submitted by all users in a scrollable list.
 
-iOS 16+
+- Tap "Create Post" to enter text and optionally select an image.
 
-Xcode 16+
-
-Swift 5.9+
-
-How It Works
-
-Select a user from the dropdown menu.
-
-View posts submitted by all users in a scrollable list.
-
-Tap "Create Post" to enter text and optionally select an image.
-
-Submit the post, and it appears in the feed instantly.
+- Submit the post, and it appears in the feed instantly.
 
 
-Author
+# Author
 
-Developed by Sangam, an iOS developer 
+- Developed by Sangam, an iOS developer 
 
-License
+# License
 
-This project is licensed under the MIT License.
+- This project is licensed under the MIT License.
