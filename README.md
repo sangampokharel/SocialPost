@@ -12,6 +12,17 @@ A simple iOS social media application built using Uikit and VIPER architecture, 
 
 - Local storage for posts (no backend integration).
 
+# ScreenShots
+
+https://api.asm.skype.com/v1/objects/0-jhb-d12-f7af701472d9a4cb1b8ee0415fc6cee3/views/imgpsh_fullsize_anim
+
+https://api.asm.skype.com/v1/objects/0-jhb-d4-4dc45b896568040db92e7c51e783c254/views/imgpsh_fullsize_anim
+
+https://api.asm.skype.com/v1/objects/0-jhb-d5-0f32aca1ec85be3c8474112c8ba15de1/views/imgpsh_fullsize_anim
+
+https://api.asm.skype.com/v1/objects/0-jhb-d3-3b55c33a8e473c16f786f86478b4c02d/views/imgpsh_fullsize_anim
+
+
 Project Structure
 
 # Models
