@@ -14,14 +14,13 @@ A simple iOS social media application built using Uikit and VIPER architecture, 
 
 # ScreenShots
 
-https://api.asm.skype.com/v1/objects/0-jhb-d12-f7af701472d9a4cb1b8ee0415fc6cee3/views/imgpsh_fullsize_anim
+![imgpsh_fullsize_anim](https://github.com/user-attachments/assets/5bcd2f7e-f8cd-4301-8f11-5b66fa0f1e99)
 
-https://api.asm.skype.com/v1/objects/0-jhb-d4-4dc45b896568040db92e7c51e783c254/views/imgpsh_fullsize_anim
+![imgpsh_fullsize_anim-2](https://github.com/user-attachments/assets/93c2f057-715f-4874-b547-a9d7950b1764)
 
-https://api.asm.skype.com/v1/objects/0-jhb-d5-0f32aca1ec85be3c8474112c8ba15de1/views/imgpsh_fullsize_anim
+![imgpsh_fullsize_anim-3](https://github.com/user-attachments/assets/3f3966d6-8692-4019-bd03-72b22731398f)
 
-https://api.asm.skype.com/v1/objects/0-jhb-d3-3b55c33a8e473c16f786f86478b4c02d/views/imgpsh_fullsize_anim
-
+![imgpsh_fullsize_anim-4](https://github.com/user-attachments/assets/11ff505d-6fce-4b42-8215-a8b846497554)
 
 Project Structure
 
